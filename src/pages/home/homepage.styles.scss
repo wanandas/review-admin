@@ -1,0 +1,16 @@
+.homepage {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  .home-contanier {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .anime-contain {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

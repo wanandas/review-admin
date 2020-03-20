@@ -1,0 +1,31 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background: #222;
+  color: #fff;
+  font-size: 1em;
+  text-transform: uppercase;
+  overflow: hidden;
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+
+    .menu-item {
+      list-style: none;
+      padding-right: 1.2em;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}

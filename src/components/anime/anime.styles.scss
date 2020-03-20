@@ -1,0 +1,26 @@
+.anime {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+
+  .anime-name {
+    padding-left: 20rem;
+  }
+  .btn-group {
+    color: wheat;
+    position: absolute;
+    right: 20rem;
+
+    .btn {
+      border-bottom: 1px solid rgb(197, 197, 197);
+      cursor: pointer;
+      &:hover {
+        color: #111;
+      }
+    }
+    .edit {
+      padding-right: 10px;
+    }
+  }
+}
