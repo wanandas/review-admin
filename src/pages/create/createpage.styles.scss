@@ -1,11 +1,13 @@
 .container {
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
   color: #111;
   position: relative;
 }
-
+#genres {
+  color: red;
+}
 li {
   list-style: none;
 }
@@ -71,6 +73,7 @@ form div {
   .btn-array {
     display: flex;
     flex-direction: row;
+    padding: 0;
   }
 
   textarea {

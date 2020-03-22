@@ -7,9 +7,6 @@ const Anime = props => {
     <div className="anime">
       <div className="anime-name">{props.name}</div>
       <div className="btn-group">
-        <a className="btn edit" onClick={props.edit}>
-          edit
-        </a>
         <a className="btn" onClick={props.delete}>
           delete
         </a>

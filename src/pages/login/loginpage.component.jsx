@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
 import "./loginpage.styles.scss";
 import FormInput from "../../components/form-input/form-input.component";
 
-const Loginpage = () => {
+import { signInStart } from "../../redux/admin/admin.action";
+
+const Loginpage = ({ signInStart }) => {
   const [userCredentials, setCredentials] = useState({
     email: "",
     password: ""
@@ -12,6 +16,8 @@ const Loginpage = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
+
+    signInStart(email, password);
   };
   const handleChange = event => {
     const { value, name } = event.target;
@@ -39,11 +45,14 @@ const Loginpage = () => {
           label="password"
           required
         />
-        <div className="buttons"></div>
+        <button type="submit">Submit</button>
       </form>
-      <button type="submit"> Submit</button>
     </div>
   );
 };
 
-export default Loginpage;
+const mapDispatchToProps = dispatch => ({
+  signInStart: (email, password) => dispatch(signInStart({ email, password }))
+});
+
+export default connect(null, mapDispatchToProps)(Loginpage);
