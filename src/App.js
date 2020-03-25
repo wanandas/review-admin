@@ -8,7 +8,7 @@ import PrivateRoute from "./utils/privateRoute/priteRoute.component";
 import Createpage from "./pages/create/createpage.component";
 import Homepage from "./pages/home/homepage.component";
 
-import addDoctoFirebase from "./redux/addDoctoFirebase";
+import { addDoctoFirebase } from "./firebase/firebase.utils";
 import { checkUserSession } from "./redux/admin/admin.action";
 import { selectCurrentUser } from "./redux/admin/admin.selection";
 import { createStructuredSelector } from "reselect";

@@ -1,56 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Anime from "../anime/anime.component";
-import { db } from "../../firebase/firebase.utils";
+import {
+  fetchReviewStart,
+  deleteReview
+} from "../../redux/review/review.action";
+import { createStructuredSelector } from "reselect";
+import { selectReviewForView } from "../../redux/review/review.selection";
+import { connect } from "react-redux";
 
-class CollectionAnime extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      anime: []
-    };
-  }
+import { deleteReviewfirebase } from "../../firebase/firebase.utils";
 
-  fetchAnimeReview = () => {
-    db.collection("review")
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          this.state.anime.push({ id: doc.id, ...doc.data() });
-          this.setState({
-            anime: this.state.anime
-          });
-        });
-      });
+const CollectionAnime = ({ anime, fetchReviewStart, deleteReivew }) => {
+  useEffect(() => {
+    fetchReviewStart();
+  }, [fetchReviewStart]);
+
+  const deleteReviewredux = id => {
+    deleteReviewfirebase(id);
+    deleteReivew();
+    fetchReviewStart();
   };
 
-  componentDidMount() {
-    this.fetchAnimeReview();
-  }
+  return (
+    <div className="anime-contain">
+      {anime.map(({ id, ...otherProps }) => {
+        return (
+          <Anime
+            key={id}
+            {...otherProps}
+            delete={() => deleteReviewredux(id)}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
-  deleteReview = id => {
-    db.collection("review")
-      .doc(id)
-      .delete();
+const mapDispatchToProps = dispatch => ({
+  fetchReviewStart: () => dispatch(fetchReviewStart()),
+  deleteReivew: () => dispatch(deleteReview())
+});
 
-    const anime = this.state.anime.filter(anime => anime.id !== id);
-    this.setState({ anime: anime });
-  };
+const mapStateToProps = createStructuredSelector({
+  anime: selectReviewForView
+});
 
-  render() {
-    return (
-      <div className="anime-contain">
-        {this.state.anime.map(anime => {
-          return (
-            <Anime
-              key={anime.id}
-              name={anime.name}
-              delete={() => this.deleteReview(anime.id)}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default CollectionAnime;
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionAnime);

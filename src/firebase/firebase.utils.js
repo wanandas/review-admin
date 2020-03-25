@@ -37,6 +37,64 @@ export const getCurrentUser = () => {
     }, reject);
   });
 };
+
+export const converReviewSnapshotToMap = collection => {
+  const transformedReview = collection.docs.map(doc => {
+    const {
+      comment,
+      genres,
+      img,
+      logline,
+      name,
+      reason,
+      reviewer,
+      score
+    } = doc.data();
+    return {
+      id: doc.id,
+      comment,
+      genres,
+      img,
+      logline,
+      name,
+      reason,
+      reviewer,
+      score
+    };
+  });
+  return transformedReview.reduce((accumelator, collection) => {
+    accumelator[collection.name] = collection;
+    return accumelator;
+  }, {});
+};
+
+export const deleteReviewfirebase = id => {
+  db.collection("review")
+    .doc(id)
+    .delete();
+};
+
+export const addDoctoFirebase = obj => {
+  db.collection("review")
+    .doc(obj.name)
+    .set({
+      genres: obj.genres,
+      name: obj.name,
+      img: obj.img,
+      score: obj.score,
+      reason: obj.reason,
+      comment: obj.comment,
+      logline: obj.logline,
+      reviewer: obj.reviewer
+    })
+    .then(function() {
+      console.log("Document written with ID: ", obj.name);
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+    });
+};
+
 export const auth = firebase.auth();
 
 export const db = firebase.firestore();

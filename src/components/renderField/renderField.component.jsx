@@ -15,6 +15,7 @@ const renderField = ({
         type={type}
         placeholder={label}
         className={classfield}
+        required
       />
       {touched && error && <span>{error}</span>}
     </div>
