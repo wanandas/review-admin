@@ -1,17 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import "./anime.styles.scss";
+import { ListItem } from "../listitem/listitem";
+import { Text, Anchor } from "grommet";
 
 const Anime = props => {
   return (
-    <div className="anime">
-      <div className="anime-name">{props.name}</div>
-      <div className="btn-group">
-        <a className="btn" onClick={props.delete}>
-          delete
-        </a>
-      </div>
-    </div>
+    <ListItem className="anime">
+      <Text>{props.name}</Text>
+      <Anchor className="btn" onClick={props.delete} color="#111">
+        delete
+      </Anchor>
+    </ListItem>
   );
 };
 

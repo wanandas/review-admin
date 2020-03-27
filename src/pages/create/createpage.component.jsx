@@ -5,13 +5,17 @@ import { FieldArray, reduxForm, Field } from "redux-form";
 import renderField from "../../components/renderField/renderField.component";
 import renderComment from "../../components/renderComment/renderComment.component";
 import renderReason from "../../components/renderReason/render-reason.component";
+import { List } from "../../components/listitem/list";
+import { Grommet, Heading, Box, Button } from "grommet";
 
 const Createpage = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
-    <div className="container">
+    <Grommet className="container">
       <form id="contact" onSubmit={handleSubmit}>
-        <h3>Create Animate Review</h3>
-        <h4>Review</h4>
+        <Box align="center" pad="small">
+          <Heading level="2">Create Animate Review</Heading>
+          <Heading level="4">Review</Heading>
+        </Box>
         <Field
           name="name"
           type="text"
@@ -53,30 +57,19 @@ const Createpage = ({ handleSubmit, pristine, reset, submitting }) => {
           component={renderField}
           label="Reviewer"
         />
-        <div className="btn-array">
+        <List>
           <FieldArray name={`genres`} component={renderGenres} />
           <FieldArray name={`reason`} component={renderReason} />
-        </div>
+        </List>
 
-        <fieldset>
-          <button
-            name="submit"
-            type="submit"
-            id="contact-submit"
-            disabled={submitting}
-          >
-            Submit
-          </button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-          >
-            Clear Values
-          </button>
-        </fieldset>
+        <Button name="submit" type="submit" disabled={submitting}>
+          Submit
+        </Button>
+        <Button type="button" disabled={pristine || submitting} onClick={reset}>
+          Clear Values
+        </Button>
       </form>
-    </div>
+    </Grommet>
   );
 };
 

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import "./loginpage.styles.scss";
 import FormInput from "../../components/form-input/form-input.component";
 
 import { signInStart } from "../../redux/admin/admin.action";
+import { Grommet, Button, Heading, Box, Form } from "grommet";
+import myTheme from "../../components/theme/mytheme";
 
 const Loginpage = ({ signInStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -25,29 +26,31 @@ const Loginpage = ({ signInStart }) => {
   };
 
   return (
-    <div className="sign-in">
-      <h2>For Admin</h2>
+    <Grommet theme={myTheme}>
+      <Box align="center">
+        <Heading level="2">For Admin</Heading>
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          name="email"
-          type="email"
-          value={email}
-          handleChange={handleChange}
-          label="email"
-          required
-        />
-        <FormInput
-          name="password"
-          type="password"
-          value={password}
-          handleChange={handleChange}
-          label="password"
-          required
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+        <Form onSubmit={handleSubmit}>
+          <FormInput
+            name="email"
+            type="email"
+            value={email}
+            handleChange={handleChange}
+            label="email"
+            required
+          />
+          <FormInput
+            name="password"
+            type="password"
+            value={password}
+            handleChange={handleChange}
+            label="password"
+            required
+          />
+          <Button type="submit" label="submit" color="#eee" />
+        </Form>
+      </Box>
+    </Grommet>
   );
 };
 

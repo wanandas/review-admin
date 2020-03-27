@@ -11,12 +11,6 @@ const renderGenres = ({ fields, meta: { error } }) => (
     </li>
     {fields.map((genres, index) => (
       <li key={index}>
-        <Field
-          name={genres}
-          type="text"
-          component={renderField}
-          label={`Genres #${index + 1}`}
-        />
         <button
           type="button"
           title="Remove Genres"
@@ -24,6 +18,12 @@ const renderGenres = ({ fields, meta: { error } }) => (
         >
           Remove
         </button>
+        <Field
+          name={genres}
+          type="text"
+          component={renderField}
+          label={`Genres #${index + 1}`}
+        />
       </li>
     ))}
     {error && <li className="error">{error}</li>}

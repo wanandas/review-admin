@@ -1,16 +1,11 @@
 .homepage {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-
-  .home-contanier {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    .anime-contain {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+  background: #f9f9f9;
+  padding: 25px 40px;
+  margin-top: 25px;
+  -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
+    0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  color: #111;
+  margin: 50px;
+  border-radius: 10px;
 }

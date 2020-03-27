@@ -1,10 +1,10 @@
 import React from "react";
+import { TextArea } from "grommet";
 
 const renderComment = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <label>{label}</label>
     <div>
-      <textarea {...input} type={type} placeholder={label} required />
+      <TextArea {...input} type={type} placeholder={label} required />
       {touched && error && <span>{error}</span>}
     </div>
   </div>

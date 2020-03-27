@@ -9,6 +9,7 @@ import { selectReviewForView } from "../../redux/review/review.selection";
 import { connect } from "react-redux";
 
 import { deleteReviewfirebase } from "../../firebase/firebase.utils";
+import { List } from "../listitem/list";
 
 const CollectionAnime = ({ anime, fetchReviewStart, deleteReivew }) => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const CollectionAnime = ({ anime, fetchReviewStart, deleteReivew }) => {
   };
 
   return (
-    <div className="anime-contain">
+    <List pad={{ horizontal: "large" }} className="anime-contain">
       {anime.map(({ id, ...otherProps }) => {
         return (
           <Anime
@@ -32,7 +33,7 @@ const CollectionAnime = ({ anime, fetchReviewStart, deleteReivew }) => {
           />
         );
       })}
-    </div>
+    </List>
   );
 };
 

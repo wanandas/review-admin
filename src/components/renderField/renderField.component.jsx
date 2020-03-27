@@ -1,24 +1,10 @@
 import React from "react";
+import { TextInput } from "grommet";
 
-const renderField = ({
-  input,
-  label,
-  type,
-  classfield,
-  meta: { touched, error }
-}) => (
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <label>{label}</label>
-    <div>
-      <input
-        {...input}
-        type={type}
-        placeholder={label}
-        className={classfield}
-        required
-      />
-      {touched && error && <span>{error}</span>}
-    </div>
+    <TextInput {...input} type={type} placeholder={label} required />
+    {touched && error && <span>{error}</span>}
   </div>
 );
 
